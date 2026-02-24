@@ -20,6 +20,12 @@ public class CatalogContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+        // Set default schema to public for PostgreSQL
+        modelBuilder.HasDefaultSchema("public");
+
+        // Enable PostgreSQL extensions if needed
+        modelBuilder.HasPostgresExtension("uuid-ossp");
+
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogContext).Assembly);
     }
 }

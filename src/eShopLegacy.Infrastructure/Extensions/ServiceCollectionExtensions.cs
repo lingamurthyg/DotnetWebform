@@ -17,16 +17,22 @@ public static class ServiceCollectionExtensions
         IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("CatalogConnection")
-            ?? "Server=(localdb)\\mssqllocaldb;Database=CatalogDb;Trusted_Connection=True;MultipleActiveResultSets=true";
+            ?? "Host=localhost;Port=5432;Database=CatalogDb;Username=postgres;Password=postgres";
 
         services.AddDbContext<CatalogContext>(options =>
-            options.UseSqlServer(connectionString, sqlOptions =>
+        {
+            options.UseNpgsql(connectionString, npgsqlOptions =>
             {
-                sqlOptions.EnableRetryOnFailure(
+                npgsqlOptions.EnableRetryOnFailure(
                     maxRetryCount: 5,
                     maxRetryDelay: TimeSpan.FromSeconds(30),
-                    errorNumbersToAdd: null);
-            }));
+                    errorCodesToAdd: null);
+                npgsqlOptions.MigrationsHistoryTable("__ef_migrations_history", "public");
+            })
+            .UseSnakeCaseNamingConvention();
+
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+        });
 
         services.AddScoped<ICatalogItemRepository, CatalogItemRepository>();
         services.AddScoped<ICatalogBrandRepository, CatalogBrandRepository>();

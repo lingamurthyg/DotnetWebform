@@ -28,15 +28,17 @@ public class CatalogItemConfiguration : IEntityTypeConfiguration<CatalogItem>
 
         builder.Property(ci => ci.Price)
             .IsRequired()
-            .HasPrecision(18, 2);
+            .HasColumnType("numeric(18,2)");
 
         builder.Property(ci => ci.PictureFileName)
             .HasMaxLength(200);
 
         builder.Property(ci => ci.CreatedDate)
-            .IsRequired();
+            .IsRequired()
+            .HasColumnType("timestamp without time zone");
 
-        builder.Property(ci => ci.ModifiedDate);
+        builder.Property(ci => ci.ModifiedDate)
+            .HasColumnType("timestamp without time zone");
 
         builder.Property(ci => ci.IsActive)
             .IsRequired()

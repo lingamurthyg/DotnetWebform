@@ -24,9 +24,11 @@ public class CatalogBrandConfiguration : IEntityTypeConfiguration<CatalogBrand>
             .HasMaxLength(100);
 
         builder.Property(cb => cb.CreatedDate)
-            .IsRequired();
+            .IsRequired()
+            .HasColumnType("timestamp without time zone");
 
-        builder.Property(cb => cb.ModifiedDate);
+        builder.Property(cb => cb.ModifiedDate)
+            .HasColumnType("timestamp without time zone");
 
         builder.Property(cb => cb.IsActive)
             .IsRequired()
