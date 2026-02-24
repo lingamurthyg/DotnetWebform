@@ -1,0 +1,86 @@
+@page
+@model eShopLegacy.Web.Pages.Catalog.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Catalog Item</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group mb-3">
+                <label asp-for="Input.Name" class="control-label"></label>
+                <input asp-for="Input.Name" class="form-control" />
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Input.Description" class="control-label"></label>
+                <textarea asp-for="Input.Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Input.Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Input.Price" class="control-label"></label>
+                <input asp-for="Input.Price" class="form-control" />
+                <span asp-validation-for="Input.Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Input.PictureFileName" class="control-label"></label>
+                <input asp-for="Input.PictureFileName" class="form-control" />
+                <span asp-validation-for="Input.PictureFileName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Input.CatalogBrandId" class="control-label"></label>
+                <select asp-for="Input.CatalogBrandId" class="form-control" asp-items="Model.BrandOptions"></select>
+                <span asp-validation-for="Input.CatalogBrandId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Input.CatalogTypeId" class="control-label"></label>
+                <select asp-for="Input.CatalogTypeId" class="form-control" asp-items="Model.TypeOptions"></select>
+                <span asp-validation-for="Input.CatalogTypeId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Input.AvailableStock" class="control-label"></label>
+                <input asp-for="Input.AvailableStock" class="form-control" />
+                <span asp-validation-for="Input.AvailableStock" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Input.RestockThreshold" class="control-label"></label>
+                <input asp-for="Input.RestockThreshold" class="form-control" />
+                <span asp-validation-for="Input.RestockThreshold" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Input.MaxStockThreshold" class="control-label"></label>
+                <input asp-for="Input.MaxStockThreshold" class="form-control" />
+                <span asp-validation-for="Input.MaxStockThreshold" class="text-danger"></span>
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="Input.OnReorder" class="form-check-input" />
+                <label asp-for="Input.OnReorder" class="form-check-label"></label>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

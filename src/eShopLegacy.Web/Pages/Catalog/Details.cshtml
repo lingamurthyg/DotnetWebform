@@ -1,0 +1,52 @@
+@page
+@model eShopLegacy.Web.Pages.Catalog.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Catalog Item Details</h1>
+
+@if (Model.Item != null)
+{
+    <div>
+        <h4>@Model.Item.Name</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">Name</dt>
+            <dd class="col-sm-10">@Model.Item.Name</dd>
+
+            <dt class="col-sm-2">Description</dt>
+            <dd class="col-sm-10">@Model.Item.Description</dd>
+
+            <dt class="col-sm-2">Price</dt>
+            <dd class="col-sm-10">$@Model.Item.Price.ToString("F2")</dd>
+
+            <dt class="col-sm-2">Brand</dt>
+            <dd class="col-sm-10">@Model.Item.CatalogBrandName</dd>
+
+            <dt class="col-sm-2">Type</dt>
+            <dd class="col-sm-10">@Model.Item.CatalogTypeName</dd>
+
+            <dt class="col-sm-2">Available Stock</dt>
+            <dd class="col-sm-10">@Model.Item.AvailableStock</dd>
+
+            <dt class="col-sm-2">Restock Threshold</dt>
+            <dd class="col-sm-10">@Model.Item.RestockThreshold</dd>
+
+            <dt class="col-sm-2">Max Stock Threshold</dt>
+            <dd class="col-sm-10">@Model.Item.MaxStockThreshold</dd>
+
+            <dt class="col-sm-2">On Reorder</dt>
+            <dd class="col-sm-10">@(Model.Item.OnReorder ? "Yes" : "No")</dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-page="Edit" asp-route-id="@Model.Item.Id" class="btn btn-warning">Edit</a>
+        <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+}
+else
+{
+    <p class="alert alert-warning">Item not found.</p>
+    <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+}

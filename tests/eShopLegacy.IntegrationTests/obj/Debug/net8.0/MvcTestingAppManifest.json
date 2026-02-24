@@ -1,0 +1,6 @@
+{
+  "eShopLegacy.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/modernize-data\/studio-data\/TNT1001\/APP1004\/transformed-code\/2\/studio-workspace\/Backend-Services\/src\/eShopLegacy.Application",
+  "eShopLegacy.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/modernize-data\/studio-data\/TNT1001\/APP1004\/transformed-code\/2\/studio-workspace\/Backend-Services\/src\/eShopLegacy.Domain",
+  "eShopLegacy.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/modernize-data\/studio-data\/TNT1001\/APP1004\/transformed-code\/2\/studio-workspace\/Backend-Services\/src\/eShopLegacy.Infrastructure",
+  "eShopLegacy.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/modernize-data\/studio-data\/TNT1001\/APP1004\/transformed-code\/2\/studio-workspace\/Backend-Services\/src\/eShopLegacy.Web"
+}
